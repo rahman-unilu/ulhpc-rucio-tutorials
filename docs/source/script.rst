@@ -1,4 +1,4 @@
-Pyhton Script
+Python Script
 ===================
 
 We can upload and download using pyhton script
