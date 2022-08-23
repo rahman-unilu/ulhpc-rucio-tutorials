@@ -7,8 +7,9 @@ Download rucio source file and open with code editor.
 
 Update pysftp: we have to update pysftp to use latest features of pysftp protocol
 
+.. code-block:: console
 
-pip install pysftp
+   pip install pysftp
 
 
 Install Ruico server
@@ -17,7 +18,8 @@ Install Ruico server
 
 (First time)
 If docker is not pulled yet 
-sudo docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml up -d
+.. code-block:: console
+   sudo docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml up -d
 
 
 Enter into rucio dev server
