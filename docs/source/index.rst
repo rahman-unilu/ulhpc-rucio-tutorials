@@ -133,4 +133,5 @@ Contents
 
    usage
    api
+   script
    
