@@ -21,32 +21,35 @@ sudo docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml up -d
 
 
 Enter into rucio dev server
-docker exec -it dev_rucio_1 /bin/bash
+.. code-block:: console
+   docker exec -it dev_rucio_1 /bin/bash
 
 
 Prepare and upload some demo data
 
-
-tools/run_tests_docker.sh -ir
+.. code-block:: console
+   tools/run_tests_docker.sh -ir
 
 
 (Second time)
-docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml start
-docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml stop
+.. code-block:: console
+   docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml start
+   docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml stop
 
 
 #Use this command to restart apache server into rucio installed docker when you update code from local machine
-
-httpd -k graceful
+.. code-block:: console
+   httpd -k graceful
 
 
 #Add a new user to root account with [user=user.root] and [password=123456]
-rucio-admin identity add --account root --type USERPASS --email user.root@uni.lu --id user.root --password 654321@
+.. code-block:: console
+   rucio-admin identity add --account root --type USERPASS --email user.root@uni.lu --id user.root --password 654321@
 
 
 #Add scope [scope = user.root] to a account root
-
-rucio-admin scope add --account root --scope user.root
+.. code-block:: console
+   rucio-admin scope add --account root --scope user.root
 
 Contents
 --------
