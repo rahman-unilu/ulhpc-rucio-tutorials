@@ -114,6 +114,7 @@ Response :
    response = requests.request("GET", url, headers=headers, data=payload)
    
 Response:
+
 .. code-block:: javascript
 
    {
