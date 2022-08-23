@@ -21,21 +21,23 @@ sudo docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml up -d
 
 
 Enter into rucio dev server
-.. code-block:: console
-   docker exec -it dev_rucio_1 /bin/bash
+``` shell
+docker exec -it dev_rucio_1 /bin/bash
+```
+   
 
 
 Prepare and upload some demo data
 
-.. code-block:: console
+``` shell
    tools/run_tests_docker.sh -ir
-
+```
 
 (Second time)
-.. code-block:: console
+``` shell
    docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml start
    docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml stop
-
+```
 
 #Use this command to restart apache server into rucio installed docker when you update code from local machine
 .. code-block:: console
