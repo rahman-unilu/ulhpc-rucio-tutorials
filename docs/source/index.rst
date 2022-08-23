@@ -68,6 +68,63 @@ Prepare and upload some demo data
 
    rucio-admin scope add --account root --scope user.root
 
+#Add some dataset [scope:datasetName]
+
+.. code-block:: console
+
+   rucio add-dataset user.root:dataset1
+   rucio add-dataset user.root:dataset2
+
+
+#Add some container [scope:containerName]
+
+.. code-block:: console
+
+   rucio add-container user.root:container1
+   rucio add-container user.root:container2
+
+
+
+# Then, create the RSEs [ SITE1_DISK, SITE2_DISK ] 
+
+.. code-block:: console
+
+   rucio-admin rse add SITE1_DISK
+   rucio-admin rse add SITE2_DISK
+
+
+# Add the protocol definitions for the rucio storage servers (RSE)
+
+(***) Use --impl rucio.rse.protocols.sftp_byte_file.Default for impl PCOG custom sftp protocol to support upload byte file and download byte file
+
+(***) Add credentials of sftp server as 
+--extended-attributes-json '{"credentials": {"username": "demo", "password": "demo"}}' 
+
+.. code-block:: console
+
+   rucio-admin rse add-protocol --hostname 127.0.0.1 --scheme sftp --prefix /sftp/rucio --port 22 --impl rucio.rse.protocols.sftp_byte_file.Default --domain-json '{"wan": {"read": 1, "write": 1, "delete": 1, "third_party_copy_read": 1, "third_party_copy_write": 1}, "lan": {"read": 1, "write": 1, "delete": 1}}' --extended-attributes-json '{"credentials": {"username": "demo", "password": "demo"}}' SITE1_DISK
+
+.. code-block:: console
+
+   rucio-admin rse add-protocol --hostname 127.0.0.1 --scheme sftp --prefix /sftp/rucio --port 22 --impl rucio.rse.protocols.sftp_byte_file.Default --domain-json '{"wan": {"read": 1, "write": 1, "delete": 1, "third_party_copy_read": 1, "third_party_copy_write": 1}, "lan": {"read": 1, "write": 1, "delete": 1}}' --extended-attributes-json '{"credentials": {"username": "demo", "password": "demo"}}' SITE2_DISK
+
+
+Check your added protocol of RSE[SITE1_DISK] :
+
+.. code-block:: console
+   rucio-admin rse info SITE1_DISK
+   rucio-admin rse info SITE2_DISK
+
+
+
+# SET Indefinite limits for RSE[SITE1_DISK] of an account[root]   (-1, 1GB, 100GB, 100000)
+
+.. code-block:: console
+   rucio-admin account set-limits root SITE1_DISK -1
+   rucio-admin account set-limits root SITE2_DISK -1
+
+
+
 Contents
 --------
 
