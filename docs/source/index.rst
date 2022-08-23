@@ -131,7 +131,7 @@ Contents
 
 .. toctree::
 
-   usage
    api
    script
+   rucioclient
    
