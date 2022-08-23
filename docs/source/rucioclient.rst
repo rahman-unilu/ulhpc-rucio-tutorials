@@ -33,6 +33,7 @@ Download Script :
 Downalod all the files form user.root:dataset1 into /opt/rucio/sharedfolder/download/files this direcotry 
 
 .. code-block:: console
+
   sharedfolder/download/run_download_script.sh -r XRD1 -s user.root -d user.root:dataset1 -p /opt/rucio/sharedfolder/download/files -c sftp
 
 
