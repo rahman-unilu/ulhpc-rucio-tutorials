@@ -132,4 +132,8 @@ Contents
 .. toctree::
 
    usage
-   api
+   Rucio api
+      upload
+      downalod
+   Rucio Client
+   
