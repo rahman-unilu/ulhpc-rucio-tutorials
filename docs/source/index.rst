@@ -120,6 +120,7 @@ Check your added protocol of RSE[SITE1_DISK] :
 # SET Indefinite limits for RSE[SITE1_DISK] of an account[root]   (-1, 1GB, 100GB, 100000)
 
 .. code-block:: console
+
    rucio-admin account set-limits root SITE1_DISK -1
    rucio-admin account set-limits root SITE2_DISK -1
 
