@@ -68,7 +68,7 @@ Update the variable before running the script:
   CHUNK_SIZE = 2
 
 
-(**) You have to define CHUNK_SIZE = 2  
+(**) You have to define CHUNK_SIZE (2,3,4,5)
 
 .. code-block:: console
 
