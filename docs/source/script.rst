@@ -1,4 +1,4 @@
-Batch Pyhton Script
+Pyhton Script
 ===================
 
 We can upload and download using pyhton script
