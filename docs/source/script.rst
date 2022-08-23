@@ -49,7 +49,7 @@ Update the variable before running the script:
   python3 download_files.py
   
 Batch Download
-==============
+--------------
   
 Run download_files_in_batch.py to download all files of a RSE and scope 
 
