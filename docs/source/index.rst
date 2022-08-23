@@ -132,5 +132,5 @@ Contents
 .. toctree::
 
    usage
-   api
+   api <API>
    
