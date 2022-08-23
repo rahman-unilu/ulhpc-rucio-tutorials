@@ -25,12 +25,12 @@ Run the script to uplaod all fiels under /opt/rucio/sharedfolder/upload/files th
 (***) We can add to all of our files to a dataset So that we can download all files under that dataset on single comamnd.
 
 
-Batch Downlaod
+Batch Download
 --------------
 
 Download Script :
 
-Downalod all the files form user.root:dataset1 into /opt/rucio/sharedfolder/download/files this direcotry 
+Downaload all the files form user.root:dataset1 into /opt/rucio/sharedfolder/download/files this direcotry 
 
 .. code-block:: console
 
