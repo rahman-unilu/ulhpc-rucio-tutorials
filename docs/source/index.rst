@@ -130,7 +130,8 @@ Contents
 --------
 
 .. toctree::
-
+   
+   self
    api
    script
    rucioclient
