@@ -3,7 +3,24 @@ Uni.lu Rucio Installation Tutorials
 
 Prerequisite:
 
-Download rucio source file and open with code editor.
+
+Clone source code from the git repo.
+	https://gitlab.uni.lu/omarcu/rucio.git
+Switch to branch xrood-protocol
+
+Check docker version 
+
+.. code-block:: console
+
+   sudo docker --version 
+
+If docker is not installed, install the docker and docker-compose:
+
+.. code-block:: console
+
+   sudo apt install docker.io
+   sudo apt install docker-compose
+
 
 Update pysftp: we have to update pysftp to use latest features of pysftp protocol
 
@@ -15,6 +32,8 @@ Update pysftp: we have to update pysftp to use latest features of pysftp protoco
 Install Ruico server
 
 (**) Make sure you are in the project root directory (/rucio/)
+
+
 
 (First time)
 If docker is not pulled yet 
