@@ -6,6 +6,11 @@ Prerequisite:
 
 Clone source code from the git repo.
 	https://gitlab.uni.lu/omarcu/rucio.git
+	
+.. code-block:: console
+	
+	git clone https://gitlab.uni.lu/omarcu/rucio.git
+	
 Switch to branch xrood-protocol
 
 Check docker version 
