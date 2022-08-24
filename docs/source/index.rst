@@ -154,4 +154,5 @@ Contents
    api
    script
    rucioclient
+   distributedxrootd
    
