@@ -152,6 +152,7 @@ By step by step
 Check your added protocol of RSE[SITE1_DISK] :
 
 .. code-block:: console
+
    rucio-admin rse info SITE1_DISK
    rucio-admin rse info SITE2_DISK
 
@@ -164,6 +165,17 @@ Check your added protocol of RSE[SITE1_DISK] :
    rucio-admin account set-limits root SITE1_DISK -1
    rucio-admin account set-limits root SITE2_DISK -1
 
+
+Check the server is running or not
+----------------------------------
+
+Browse this link: https://127.0.0.1:8443/ping
+
+If server is running then, you will get response with the version number of the rucio server.
+
+.. code-block:: console
+
+    {"version":"1.28.0"}
 
 
 Contents
