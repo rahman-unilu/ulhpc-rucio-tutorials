@@ -79,6 +79,22 @@ Prepare and upload some demo data
    httpd -k graceful
 
 
+Add a demo account
+---------------------
+
+we can use a single script or we can follow the some steps.
+
+By Script (Recommended):
+
+.. code-block:: console
+
+    sharedfolder/run_demo_data.sh
+
+OR
+
+By step by step
+
+
 #Add a new user to root account with [user=user.root] and [password=123456]
 
 .. code-block:: console
