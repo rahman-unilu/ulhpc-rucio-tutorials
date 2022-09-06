@@ -206,5 +206,6 @@ Contents
    api
    script
    rucioclient
+   distributedrucio
    distributedxrootd
    
