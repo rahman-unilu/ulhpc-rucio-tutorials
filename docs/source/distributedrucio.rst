@@ -147,13 +147,64 @@ If you get 500 Internal Server Error , Then you have to install a missing python
   pip install python-memcached
 
 
-HAProxy Install
----------------
+HAProxy Install and Configuration
+---------------------------------
 
 11. If HAProxy is not installed we can instal it using the instruction of https://ulhpc-rucio-tutorials.readthedocs.io/en/latest/haproxyinstall.html
     
     [If HAProxy is already installed then we can ignore this step.]
-12.
-   
- 
+    
+12. Create a self-signed SSL certificate
 
+.. code-block:: console
+
+    sudo apt-get -y install openssl
+
+  12.a Run the following command to create your self-signed SSL certificate and move it to /etc/ssl/private
+
+.. code-block:: console
+
+   openssl req -nodes -x509 -newkey rsa:2048 -keyout /etc/ssl/private/test.key -out /etc/ssl/private/test.crt -days 30
+
+  12.b Now we have to create a pem file by copying key and certificate to a file. That goes with:
+
+.. code-block:: console
+
+   cat /etc/ssl/private/test.key /etc/ssl/private/test.crt > /etc/ssl/private/test.pem
+
+13. Once installed HAProxy should already have a template for configuring the load balancer. Open the configuration file, for example,
+
+.. code-block:: console
+
+    sudo nano /etc/haproxy/haproxy.cfg
+
+Add the following sections to the end of the file. Replace the with whatever you want to call your servers on the statistics page and with the private IPs for the servers you wish to direct the web traffic to.
+
+.. code-block:: console
+
+	frontend http_front
+	   bind \*:80
+	   bind \*:443 ssl crt /certs/haproxy.pem name sslweb
+	   stats uri /haproxy?stats
+	   default_backend http_back
+	backend http_back
+	   balance roundrobin
+	   server server1 127.0.0.1:8442 check ssl verify none
+	   server server2 127.0.0.1:8443 check ssl verify none
+
+ 14. After making the configurations, save the file and restart HAProxy with the next command.
+
+.. code-block:: console
+
+    sudo systemctl restart haproxy
+
+ 15. Testing the setup
+ 
+With the HAProxy configured and running, open your load balancer server’s public IP in a web browser and check that you get connected to your backend correctly. The parameter stats uri in the configuration enables the statistics page at the defined address.
+
+.. code-block:: console
+
+    http://[IP_OF_THE_HOST]/haproxy?stats
+    
+.. image:: haproxy_state_page.png
+   :width: 600
