@@ -160,13 +160,13 @@ HAProxy Install and Configuration
 
     sudo apt-get -y install openssl
 
-  12.a Run the following command to create your self-signed SSL certificate and move it to /etc/ssl/private
+12.a Run the following command to create your self-signed SSL certificate and move it to /etc/ssl/private
 
 .. code-block:: console
 
    openssl req -nodes -x509 -newkey rsa:2048 -keyout /etc/ssl/private/test.key -out /etc/ssl/private/test.crt -days 30
 
-  12.b Now we have to create a pem file by copying key and certificate to a file. That goes with:
+12.b Now we have to create a pem file by copying key and certificate to a file. That goes with:
 
 .. code-block:: console
 
@@ -192,13 +192,13 @@ Add the following sections to the end of the file. Replace the with whatever you
 	   server server1 127.0.0.1:8442 check ssl verify none
 	   server server2 127.0.0.1:8443 check ssl verify none
 
- 14. After making the configurations, save the file and restart HAProxy with the next command.
+14. After making the configurations, save the file and restart HAProxy with the next command.
 
 .. code-block:: console
 
     sudo systemctl restart haproxy
 
- 15. Testing the setup
+15. Testing the setup
  
 With the HAProxy configured and running, open your load balancer server’s public IP in a web browser and check that you get connected to your backend correctly. The parameter stats uri in the configuration enables the statistics page at the defined address.
 
