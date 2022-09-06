@@ -59,13 +59,13 @@ If docker already pulled and container created.
 
    curl -k https://127.0.0.1/ping
    
-   If server is running then, you will get response with the version number of the rucio server.
+If server is running then, you will get response with the version number of the rucio server.
 
 .. code-block:: console
 
     {"version":"1.28.0"}
   
- If you get 500 Internal Server Error , Then you have to install a missing python library pyhton-memcached
+If you get 500 Internal Server Error , Then you have to install a missing python library pyhton-memcached
    
 .. code-block:: console
   
