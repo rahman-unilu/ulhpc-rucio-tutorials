@@ -42,7 +42,7 @@ Now we have to update ip for databse server, so that multiple rucio can access t
    vi docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml up -d
 
 .. image:: server1_config.png
-   :width: 400
+   :width: 500
 
 
 
