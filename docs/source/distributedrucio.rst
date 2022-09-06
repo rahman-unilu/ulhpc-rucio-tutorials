@@ -204,7 +204,21 @@ With the HAProxy configured and running, open your load balancer server’s publ
 
 .. code-block:: console
 
-    http://[IP_OF_THE_HOST]/haproxy?stats
+    http://[IP_OF_THE_HAPROXY_HOST_SERVER]/haproxy?stats
     
 .. image:: haproxy_state_page.png
    :width: 600
+
+16. Now we can check is rucio server can be access through HAProxy.
+
+we can browse the following url
+
+.. code-block:: console
+
+  https://[IP_OF_THE_HAPROXY_HOST_SERVER]/ping
+  
+If server is running then, you will get response with the version number of the rucio server.
+
+.. code-block:: console
+
+    {"version":"1.28.0"}
