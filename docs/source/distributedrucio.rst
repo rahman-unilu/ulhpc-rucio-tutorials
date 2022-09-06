@@ -31,28 +31,125 @@ Install multiple rucio server
 
 For distrbuted system we have install multilple rucio servers.
 
-For installing first server, database and RSE server we can follow the following instructions 
 
 (**)Make sure you are in the project root directory (/rucio/)
 
-Now we have to update ip for databse server, so that multiple rucio can access the same databse.
+3. We have to update IP for databse server in docker-compose file, so that multiple rucio can access the same databse.
 
 .. code-block:: console
 
-   vi docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml up -d
+   vi etc/docker/dev/docker-compose-storage-alldb.yml
 
 .. image:: server1_config.png
    :width: 500
 
+We have to use same IP address what we have used earlier.
+
+.. code-block:: console
+
+   vi etc/docker/dev/docker-compose-only-server.yml
+
+.. image:: server2_config.png
+   :width: 500
 
 
-And for instaling second rucio server we can run the command 
+4. Install 1st Ruico server by running docker-composer file. 
 
 (**) Make sure you are in the project root directory (/rucio/)
+
+(First time)
+If docker is not pulled yet 
+
+.. code-block:: console
+
+   sudo docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml up -d
+   
+This docker-compose commad will install rucio server1, rucio client, postgress database, and storage server like XRootD. 
+
+3. Install 2nd rucio server
+
+(First time)
+If docker is not pulled yet 
 
 .. code-block:: console
 
    sudo docker-compose --file etc/docker/dev/docker-compose-only-server.yml up -d
+
+This docker-compose commad will install only 2nd rucio server.
+
+4. Enter into rucio dev server1
+
+.. code-block:: console
+
+   docker exec -it dev_rucio_1 /bin/bash
+
+5. Check, the server is installed or not.
+
+.. code-block:: console
+
+   curl -k https://127.0.0.1/ping
+   
+If server is running then, you will get response with the version number of the rucio server.
+
+.. code-block:: console
+
+    {"version":"1.28.0"}
+  
+If you get 500 Internal Server Error , Then you have to install a missing python library pyhton-memcached
+   
+.. code-block:: console
+  
+  pip install python-memcached
+
+Prepare and upload some demo data
+---------------------------------
+
+6. Run a script to initialize the database.
+
+.. code-block:: console
+
+   tools/run_tests_docker.sh -ir
+
+7. Add a demo account by running a single script
+
+.. code-block:: console
+
+    sharedfolder/run_demo_data.sh
+
+8. Logout form sever 1
+
+.. code-block:: console
+
+    exit
+
+9. Enter into rucio dev server2
+
+.. code-block:: console
+
+   docker exec -it dev_rucio_1 /bin/bash
+
+10. Check, the server is runnnig or not.
+
+.. code-block:: console
+
+   curl -k https://127.0.0.1/ping
+   
+If server is running then, you will get response with the version number of the rucio server.
+
+.. code-block:: console
+
+    {"version":"1.28.0"}
+  
+If you get 500 Internal Server Error , Then you have to install a missing python library pyhton-memcached
+   
+.. code-block:: console
+  
+  pip install python-memcached
+
+
+
+
+
    
  
 
