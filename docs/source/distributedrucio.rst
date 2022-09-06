@@ -147,9 +147,12 @@ If you get 500 Internal Server Error , Then you have to install a missing python
   pip install python-memcached
 
 
+HAProxy Install
+---------------
 
-
-
+11. If HAProxy is not installed we can instal it using the instruction of :ref:`<haproxyinstall>`
+    [If HAProxy is already installed then we can ignore this step.]
+12.
    
  
 
