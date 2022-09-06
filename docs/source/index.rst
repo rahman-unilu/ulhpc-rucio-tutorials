@@ -206,6 +206,7 @@ Contents
    api
    script
    rucioclient
+   haproxyinstall
    distributedrucio
    distributedxrootd
    
