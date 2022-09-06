@@ -4,7 +4,7 @@ Uni.lu Rucio Installation Tutorials
 Prerequisite:
 
 
-Clone source code from the git repo.
+1. Clone source code from the git repo.
 	https://gitlab.uni.lu/omarcu/rucio.git
 	
 .. code-block:: console
@@ -13,7 +13,7 @@ Clone source code from the git repo.
 	
 Switch to branch xrood-protocol
 
-Check docker version 
+2. Check docker version 
 
 .. code-block:: console
 
@@ -27,18 +27,10 @@ If docker is not installed, install the docker and docker-compose:
    sudo apt install docker-compose
 
 
-Update pysftp: we have to update pysftp to use latest features of pysftp protocol
 
-.. code-block:: console
-
-   pip install pysftp
-
-
-Install Ruico server
+3. Install Ruico server
 
 (**) Make sure you are in the project root directory (/rucio/)
-
-
 
 (First time)
 If docker is not pulled yet 
@@ -47,30 +39,46 @@ If docker is not pulled yet
 
    sudo docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml up -d
 
-
-Enter into rucio dev server
-
-.. code-block:: console
-
-   docker exec -it dev_rucio_1 /bin/bash
-
-   
-
-
-Prepare and upload some demo data
-
-.. code-block:: console
-
-   tools/run_tests_docker.sh -ir
-
-
 (Second time)
+If docker already pulled and container created.
 
 .. code-block:: console
 
    docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml start
    docker-compose --file etc/docker/dev/docker-compose-storage-alldb.yml stop
 
+4. Enter into rucio dev server
+
+.. code-block:: console
+
+   docker exec -it dev_rucio_1 /bin/bash
+
+5. Check, the server is installed or not.
+
+.. code-block:: console
+
+   curl -k https://127.0.0.1/ping
+   
+   If server is running then, you will get response with the version number of the rucio server.
+
+.. code-block:: console
+
+    {"version":"1.28.0"}
+  
+ If you get 500 Internal Server Error , Then you have to install a missing python library pyhton-memcached
+   
+.. code-block:: console
+  
+  pip install python-memcached
+
+Prepare and upload some demo data
+---------------------------------
+
+6. Run a script to initialize the database.
+
+.. code-block:: console
+
+   tools/run_tests_docker.sh -ir
 
 #Use this command to restart apache server into rucio installed docker when you update code from local machine
 
@@ -79,12 +87,13 @@ Prepare and upload some demo data
    httpd -k graceful
 
 
+
 Add a demo account
 ---------------------
 
-we can use a single script or we can follow the some steps.
+7. we can run a single script or we can follow the following steps.
 
-By Script (Recommended):
+7.a By running a single script (Recommended):
 
 .. code-block:: console
 
@@ -92,7 +101,7 @@ By Script (Recommended):
 
 OR
 
-By step by step
+7.b By step by step [if you already run the 7.a script then you dont need to follow the below steps]
 
 
 #Add a new user to root account with [user=user.root] and [password=123456]
@@ -169,7 +178,17 @@ Check your added protocol of RSE[SITE1_DISK] :
 Check the server is running or not
 ----------------------------------
 
+Now you can check the server is running or not outside of the docker. 
+
 Browse this link: https://127.0.0.1:8443/ping
+
+OR 
+
+From CMD 
+
+.. code-block:: console
+
+  curl -k https://127.0.0.1:8443/ping
 
 If server is running then, you will get response with the version number of the rucio server.
 
