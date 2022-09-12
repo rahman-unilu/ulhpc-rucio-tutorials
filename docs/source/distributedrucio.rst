@@ -241,14 +241,14 @@ Run the following script.
 
 It will take some times to intall the servers. This script witll setup the following servers uisng docker-compose
 
--- 3 rucio servers
--- 3 Rucio clients
--- 3 Rucio UI
--- 1 HAProxy server
--- 1 XRootD manager storage server
--- 3 XrootD storage server
--- 1 postgress database server
--- 1 sftp storage server
+* 3 rucio servers
+* 3 Rucio clients
+* 3 Rucio UI
+* 1 HAProxy server
+* 1 XRootD manager storage server
+* 3 XrootD storage server
+* 1 postgress database server
+* 1 sftp storage server
 
 we can check all the server is running or not using the folloing command
 
