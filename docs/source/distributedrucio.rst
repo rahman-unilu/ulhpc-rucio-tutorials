@@ -239,7 +239,42 @@ Run the following script.
 	./initialize_distributed_server.sh
 	
 
-It will take some times to intall the servers.
+It will take some times to intall the servers. This script witll setup the following servers uisng docker-compose
 
+-- 3 rucio servers
+-- 3 Rucio clients
+-- 3 Rucio UI
+-- 1 HAProxy server
+-- 1 XRootD manager storage server
+-- 3 XrootD storage server
+-- 1 postgress database server
+-- 1 sftp storage server
 
+we can check all the server is running or not using the folloing command
 
+.. code-block:: console
+	
+	sudo docker ps -a
+
+Now we can check that, is the HAproxy server is running or not. 
+
+.. code-block:: console
+
+    https://127.0.0.1:8441/haproxy?stats
+    
+.. image:: haproxy_state_page.png
+   :width: 600
+
+Now we can check is rucio server can be access through HAProxy.
+
+we can browse the following url
+
+.. code-block:: console
+
+  https://127.0.0.1:8441/ping
+  
+If server is running then, you will get response with the version number of the rucio server.
+
+.. code-block:: console
+
+    {"version":"1.28.0"}
