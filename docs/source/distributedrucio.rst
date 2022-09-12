@@ -27,7 +27,7 @@ If docker is not installed, install the docker and docker-compose:
 
 
 Install multiple rucio server
----------------------------
+-----------------------------
 
 For distrbuted system we have install multilple rucio servers.
 
@@ -222,3 +222,25 @@ If server is running then, you will get response with the version number of the 
 .. code-block:: console
 
     {"version":"1.28.0"}
+    
+
+
+With single script
+------------------
+
+There is a single script that will prepare and initialize all the server and data.
+
+
+(**)Make sure you are in the project root directory (/rucio/)
+
+Run the following script.
+
+.. code-block:: console
+	
+	./initialize_distributed_server.sh
+	
+
+It will take some times to intall the servers.
+
+
+
