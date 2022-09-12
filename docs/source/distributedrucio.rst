@@ -236,7 +236,7 @@ Run the following script.
 
 .. code-block:: console
 	
-	./initialize_distributed_server.sh
+	sudo ./initialize_distributed_server.sh
 	
 
 It will take some times to intall the servers. This script witll setup the following servers uisng docker-compose
