@@ -225,11 +225,10 @@ If server is running then, you will get response with the version number of the 
     
 
 
-With single script
-------------------
+With a single script
+--------------------
 
-There is a single script that will prepare and initialize all the server and data.
-
+There is a single script that will initialize and prepare all the server and data.
 
 (**)Make sure you are in the project root directory (/rucio/)
 
